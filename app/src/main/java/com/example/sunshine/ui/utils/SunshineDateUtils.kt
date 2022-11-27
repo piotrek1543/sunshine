@@ -140,7 +140,7 @@ object SunshineDateUtils {
                 or DateUtils.FORMAT_SHOW_TIME)
         var readableDate = getReadableDateString(context, date, flags)
 
-        if (daysFromEpochToProvidedDate == daysFromEpochToToday) {
+        return if (daysFromEpochToProvidedDate == daysFromEpochToToday) {
             /*
              * If the date we're building the String for is today's date, the format
              * is "Today, June 24"
@@ -164,15 +164,13 @@ object SunshineDateUtils {
                             or DateUtils.FORMAT_SHOW_TIME)
 
                 readableDate = getReadableDateString(context, date, flags)
-                return readableDate.replace(localizedDayName, dayName)
+                readableDate.replace(localizedDayName, dayName)
             } else {
-
-
-                return readableDate
+                readableDate
             }
         } else if (daysFromEpochToProvidedDate < daysFromEpochToToday + 2) {
             /* If the input date is less than a week in the future, just return the day name. */
-            return readableDate.replace(localizedDayName, dayName)
+            readableDate.replace(localizedDayName, dayName)
         } else {
             flags = (DateUtils.FORMAT_SHOW_DATE
                     or DateUtils.FORMAT_ABBREV_WEEKDAY
@@ -180,7 +178,7 @@ object SunshineDateUtils {
                     or DateUtils.FORMAT_SHOW_WEEKDAY
                     or DateUtils.FORMAT_SHOW_TIME)
 
-            return DateUtils.formatDateTime(context, date, flags)
+            DateUtils.formatDateTime(context, date, flags)
         }
     }
 

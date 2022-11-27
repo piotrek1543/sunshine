@@ -15,11 +15,11 @@ open class CachedRainMapper @Inject constructor() :
      * Map a [Rain] instance to a [CachedRain] instance
      */
     override fun mapToCached(type: Rain): CachedRain =
-        CachedRain(_3h = type._3h, listDt = type.listDt)
+        CachedRain(in3h = type.in3h, listDt = type.listDt)
 
     /**
      * Map a [CachedRain] instance to a [Rain] instance
      */
-    override fun mapFromCached(type: CachedRain): Rain = Rain(_3h = type._3h, listDt = type.listDt)
+    override fun mapFromCached(type: CachedRain): Rain = Rain(in3h = type.in3h, listDt = type.listDt)
 
 }

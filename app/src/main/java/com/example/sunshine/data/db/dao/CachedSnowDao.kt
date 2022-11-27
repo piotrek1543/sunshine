@@ -8,15 +8,15 @@ import com.example.sunshine.data.db.constants.SnowConstants
 import com.example.sunshine.data.db.model.CachedSnow
 
 @Dao
-abstract class CachedSnowDao {
+interface CachedSnowDao {
 
     @Query(SnowConstants.QUERY_SNOW)
-    abstract fun getSnow(): List<CachedSnow>?
+    suspend fun getSnow(): List<CachedSnow>?
 
     @Query(SnowConstants.DELETE_ALL_SNOWS)
-    abstract fun clearSnow()
+    suspend fun clearSnow()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertSnow(cachedSnow: List<CachedSnow>?)
+    suspend fun insertSnow(cachedSnow: List<CachedSnow>?)
 
 }

@@ -8,5 +8,5 @@ data class Forecast(
     val cod: String? = null,
     val message: Double? = null,
     val cnt: Int? = null,
-    val list: kotlin.collections.List<List>? = null
+    val list: kotlin.collections.List<List>? = null,
 )

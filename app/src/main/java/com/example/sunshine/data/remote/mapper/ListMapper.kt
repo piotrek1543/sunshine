@@ -21,6 +21,7 @@ open class ListMapper @Inject constructor(
     /**
      * Map an instance of a [ListModel] to a [List] model
      */
+    @Suppress("ComplexMethod")
     override fun mapFromRemote(type: ListModel): List {
         val mainModel = type.mainModel.apply { this?.listDt = type.dt }
         val weatherModel = type.weatherModel?.get(0)?.let { it.apply { this.listDt = type.dt } }

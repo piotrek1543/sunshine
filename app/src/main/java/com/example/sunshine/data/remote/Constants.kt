@@ -15,4 +15,4 @@ object Constants {
 
     const val BASE_URL = "http://api.openweathermap.org/data/2.5/"
     const val APPID = "cf28f00904e59e7ba0fc080879080861"
-}//not called
+}

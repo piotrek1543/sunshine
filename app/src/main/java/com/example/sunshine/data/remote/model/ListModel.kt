@@ -1,6 +1,5 @@
 package com.example.sunshine.data.remote.model
 
-import com.example.sunshine.data.remote.model.*
 import com.google.gson.annotations.SerializedName
 
 class ListModel(

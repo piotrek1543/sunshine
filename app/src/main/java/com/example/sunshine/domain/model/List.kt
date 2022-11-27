@@ -12,5 +12,5 @@ data class List(
         val rain: Rain? = null,
         val snow: Snow? = null,
         val pod: Pod? = null,
-        val dtTxt: String? = null
+        val dtTxt: String? = null,
 )

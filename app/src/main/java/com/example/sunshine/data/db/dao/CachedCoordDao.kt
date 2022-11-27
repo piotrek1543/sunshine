@@ -8,15 +8,15 @@ import com.example.sunshine.data.db.constants.CoordConstants
 import com.example.sunshine.data.db.model.CachedCoord
 
 @Dao
-abstract class CachedCoordDao {
+interface CachedCoordDao {
 
     @Query(CoordConstants.QUERY_COORD)
-    abstract fun getCoord(): CachedCoord?
+    suspend fun getCoord(): CachedCoord?
 
     @Query(CoordConstants.DELETE_ALL_COORDS)
-    abstract fun clearCoord()
+    suspend fun clearCoord()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertCoord(cachedCoord: CachedCoord?)
+    suspend fun insertCoord(cachedCoord: CachedCoord?)
 
 }

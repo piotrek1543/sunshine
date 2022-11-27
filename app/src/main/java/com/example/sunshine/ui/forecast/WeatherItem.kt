@@ -2,7 +2,10 @@ package com.example.sunshine.ui.forecast
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,9 +17,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.sunshine.R
+import com.example.sunshine.presentation.model.ForecastView
 import com.example.sunshine.ui.utils.SunshineDateUtils
 import com.example.sunshine.ui.utils.SunshineWeatherUtils
 
+private const val TIME_UNIT_MILLIS = 1_000L
 
 @Composable
 fun WeatherItem(
@@ -57,7 +62,7 @@ fun WeatherItem(
         ) {
             val formattedDate = SunshineDateUtils.getFriendlyDateString(
                 LocalContext.current,
-                forecast.date * 1000L,
+                forecast.date * TIME_UNIT_MILLIS,
                 false,
             )
             val formattedDescription = stringResource(

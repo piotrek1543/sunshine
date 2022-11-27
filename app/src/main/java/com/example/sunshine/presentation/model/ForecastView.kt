@@ -1,4 +1,4 @@
-package com.example.sunshine.ui.forecast
+package com.example.sunshine.presentation.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

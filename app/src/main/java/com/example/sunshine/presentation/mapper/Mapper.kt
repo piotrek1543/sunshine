@@ -1,7 +1,5 @@
 package com.example.sunshine.presentation.mapper
 
-import com.example.sunshine.domain.model.List
-
 /**
  * Interface for model mappers. It provides helper methods that facilitate
  * retrieving of models from outer layers
@@ -12,5 +10,4 @@ import com.example.sunshine.domain.model.List
 interface Mapper<out V, in D> {
 
     fun mapToView(type: D): V
-
 }

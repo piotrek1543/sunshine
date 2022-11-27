@@ -26,5 +26,4 @@ open class SharedPreferencesHelper @Inject constructor(private val sharedPrefere
     var isMetric: Boolean
         get() = sharedPreferences.getBoolean(PREF_KEY_IS_METRIC, true)
         set(metric) = sharedPreferences.edit().putBoolean(PREF_KEY_IS_METRIC, metric).apply()
-
 }

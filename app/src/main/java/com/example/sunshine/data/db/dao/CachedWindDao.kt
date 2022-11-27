@@ -8,15 +8,15 @@ import com.example.sunshine.data.db.constants.WindConstants
 import com.example.sunshine.data.db.model.CachedWind
 
 @Dao
-abstract class CachedWindDao {
+interface CachedWindDao {
 
     @Query(WindConstants.QUERY_WIND)
-    abstract fun getWind(): List<CachedWind>?
+    suspend fun getWind(): List<CachedWind>?
 
     @Query(WindConstants.DELETE_ALL_WINDS)
-    abstract fun clearWind()
+    suspend fun clearWind()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertWind(cachedWind: List<CachedWind>?)
+    suspend fun insertWind(cachedWind: List<CachedWind>?)
 
 }

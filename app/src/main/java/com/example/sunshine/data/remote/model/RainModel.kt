@@ -4,6 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 class RainModel(
     @SerializedName("3h")
-    var _3h: Double? = null,
+    var in3h: Double? = null,
     var listDt: Long? = null
 )

@@ -4,11 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.sunshine.data.repository.ForecastRepository
 import com.example.sunshine.presentation.mapper.ForecastMapper
-import com.example.sunshine.ui.forecast.ForecastView
+import com.example.sunshine.presentation.model.ForecastView
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -32,9 +33,11 @@ class ForecastViewModel @Inject constructor(
                 val list = forecast.list
                     ?.map {
                         forecastMapper.mapToView(it)
-                    }?: emptyList()
+                    } ?: emptyList()
                 _state.emit(ViewState.Success(list))
-            } catch (exception: Exception) {
+            } catch (exception: UnknownHostException) {
+                _state.emit(ViewState.Error(exception))
+            } catch (exception: IllegalStateException) {
                 _state.emit(ViewState.Error(exception))
             }
         }

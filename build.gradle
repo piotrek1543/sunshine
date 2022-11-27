@@ -29,7 +29,7 @@ subprojects {
 
     detekt {
         buildUponDefaultConfig = true
-        config = files("$projectDir/detekt.yml")
+        config = files("$projectDir/detekt/detekt.yml")
         baseline = file("$projectDir/detekt/baseline.xml")
     }
 }

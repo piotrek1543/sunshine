@@ -8,15 +8,15 @@ import com.example.sunshine.data.db.constants.CityConstants
 import com.example.sunshine.data.db.model.CachedCity
 
 @Dao
-abstract class CachedCityDao {
+interface CachedCityDao {
 
     @Query(CityConstants.QUERY_CITY)
-    abstract fun getCity(): CachedCity?
+    suspend fun getCity(): CachedCity?
 
     @Query(CityConstants.DELETE_ALL_CITIES)
-    abstract fun clearCity()
+    suspend fun clearCity()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertCity(cachedCity: CachedCity?)
+    suspend fun insertCity(cachedCity: CachedCity?)
 
 }

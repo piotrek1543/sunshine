@@ -16,5 +16,5 @@ import com.example.sunshine.data.db.constants.RainConstants
 data class CachedRain(
         @PrimaryKey(autoGenerate = true)
         var listDt: Long? = null,
-        var _3h: Double? = null
+        var in3h: Double? = null
 )

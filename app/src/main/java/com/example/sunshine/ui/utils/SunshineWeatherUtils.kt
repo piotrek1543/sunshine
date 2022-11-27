@@ -1,3 +1,5 @@
+@file:Suppress("MagicNumber", "ComplexMethod")
+
 package com.example.sunshine.ui.utils
 
 import android.content.Context

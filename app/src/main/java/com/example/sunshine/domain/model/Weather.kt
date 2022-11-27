@@ -9,5 +9,5 @@ data class Weather(
         val main: String? = null,
         val description: String? = null,
         val icon: String? = null,
-        val listDt: Long?
+        val listDt: Long?,
 )

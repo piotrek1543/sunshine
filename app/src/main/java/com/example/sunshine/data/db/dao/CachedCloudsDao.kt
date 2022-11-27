@@ -8,15 +8,15 @@ import com.example.sunshine.data.db.constants.CloudsConstants
 import com.example.sunshine.data.db.model.CachedClouds
 
 @Dao
-abstract class CachedCloudsDao {
+interface CachedCloudsDao {
 
     @Query(CloudsConstants.QUERY_CLOUDS)
-    abstract fun getClouds(): List<CachedClouds>?
+    suspend fun getClouds(): List<CachedClouds>?
 
     @Query(CloudsConstants.DELETE_ALL_CLOUDS)
-    abstract fun clearClouds()
+    suspend fun clearClouds()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertClouds(cachedClouds: List<CachedClouds>?)
+    suspend fun insertClouds(cachedClouds: List<CachedClouds>?)
 
 }

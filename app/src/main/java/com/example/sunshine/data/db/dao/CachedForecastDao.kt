@@ -8,15 +8,15 @@ import com.example.sunshine.data.db.constants.ForecastConstants
 import com.example.sunshine.data.db.model.CachedForecast
 
 @Dao
-abstract class CachedForecastDao {
+interface CachedForecastDao {
 
     @Query(ForecastConstants.QUERY_FORECAST)
-    abstract fun getForecast(): CachedForecast?
+    suspend fun getForecast(): CachedForecast?
 
     @Query(ForecastConstants.DELETE_ALL_FORECASTS)
-    abstract fun clearForecast()
+    suspend fun clearForecast()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertForecast(cachedForecast: CachedForecast)
+    suspend fun insertForecast(cachedForecast: CachedForecast)
 
 }

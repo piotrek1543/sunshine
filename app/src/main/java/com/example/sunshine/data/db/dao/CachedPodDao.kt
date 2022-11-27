@@ -8,15 +8,15 @@ import com.example.sunshine.data.db.constants.PodConstants
 import com.example.sunshine.data.db.model.CachedPod
 
 @Dao
-abstract class CachedPodDao {
+interface CachedPodDao {
 
     @Query(PodConstants.QUERY_POD)
-    abstract fun getPod(): List<CachedPod>?
+    suspend fun getPod(): List<CachedPod>?
 
     @Query(PodConstants.DELETE_ALL_PODS)
-    abstract fun clearPod()
+    suspend fun clearPod()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertPod(cachedPod: List<CachedPod>?)
+    suspend fun insertPod(cachedPod: List<CachedPod>?)
 
 }

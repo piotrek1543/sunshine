@@ -7,5 +7,5 @@ package com.example.sunshine.domain.model
 data class Coord(
     val cityId: Int? = null,
     val lon: Double? = null,
-    val lat: Double? = null
+    val lat: Double? = null,
 )

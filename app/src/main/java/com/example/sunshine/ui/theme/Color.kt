@@ -1,3 +1,5 @@
+@file:Suppress("MagicNumber")
+
 package com.example.sunshine.ui.theme
 
 import androidx.compose.ui.graphics.Color

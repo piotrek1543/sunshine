@@ -17,5 +17,5 @@ import com.example.sunshine.data.db.constants.SnowConstants
 data class CachedSnow(
         @PrimaryKey
         var listDt: Long? = null,
-        var _3h: Double? = null
+        var in3h: Double? = null
 )

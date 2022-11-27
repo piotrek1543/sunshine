@@ -5,6 +5,7 @@ import com.example.sunshine.domain.model.City
 import java.util.*
 import javax.inject.Inject
 
+private const val CACHED_CITY_ID_BOUND = 100_000
 /**
  * Map a [CachedCity] instance to and from a [City] instance when data is moving between
  * this later and the Data layer
@@ -17,7 +18,7 @@ open class CachedCityMapper @Inject constructor() :
      */
     override fun mapToCached(type: City): CachedCity {
         return CachedCity(
-                id = type.id ?: Random().nextInt(100_000),
+                id = type.id ?: Random().nextInt(CACHED_CITY_ID_BOUND),
                 name = type.name,
                 country = type.country,
                 population = type.population

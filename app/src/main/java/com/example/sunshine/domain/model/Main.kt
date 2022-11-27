@@ -12,5 +12,5 @@ data class Main(
         val grndLevel: String? = null,
         val humidity: Int? = null,
         val tempKf: String? = null,
-        val listDt: Long?
+        val listDt: Long?,
 )

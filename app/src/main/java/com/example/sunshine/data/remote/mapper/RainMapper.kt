@@ -14,6 +14,6 @@ open class RainMapper @Inject constructor() : Mapper<RainModel, Rain> {
      * Map an instance of a [RainModel] to a [Rain] model
      */
     override fun mapFromRemote(type: RainModel): Rain =
-        Rain(_3h = type._3h, listDt = type.listDt)
+        Rain(in3h = type.in3h, listDt = type.listDt)
 
 }
