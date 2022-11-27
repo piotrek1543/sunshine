@@ -9,7 +9,7 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.sunshine.ui.forecast.ForecastViewComposable
-import com.example.sunshine.ui.forecast.ForecastViewModel
+import com.example.sunshine.presentation.forecast.ForecastViewModel
 import com.example.sunshine.ui.theme.SunshineTheme
 import dagger.hilt.android.AndroidEntryPoint
 
