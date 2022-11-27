@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -24,7 +25,7 @@ import com.example.sunshine.ui.utils.SunshineWeatherUtils
 private const val TIME_UNIT_MILLIS = 1_000L
 
 @Composable
-fun WeatherItem(
+fun ForecastItem(
     modifier: Modifier = Modifier,
     forecast: ForecastView,
     isMetric: Boolean = true,
@@ -40,17 +41,19 @@ fun WeatherItem(
 
         val context = LocalContext.current
         val formattedTempMin =
-            SunshineWeatherUtils.formatTemperature(context, forecast.tempMax, isMetric)
+            SunshineWeatherUtils.formatTemperature(context, forecast.tempMin, isMetric)
         val formattedTempMax =
             SunshineWeatherUtils.formatTemperature(context, forecast.tempMax, isMetric)
+        val imageResId = SunshineWeatherUtils.getResourceIdForWeatherCondition(forecast.icon)
 
         Image(
-            painter = painterResource(id = R.drawable.art_clouds),
+            painter = painterResource(id = imageResId),
             modifier = Modifier
                 .size(40.dp)
                 .constrainAs(icon) {
                     start.linkTo(parent.start)
                 },
+            contentScale = ContentScale.Crop,
             contentDescription = stringResource(id = R.string.accessibility_weather_icon),
         )
         Column(

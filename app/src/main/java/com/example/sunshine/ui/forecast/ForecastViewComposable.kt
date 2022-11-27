@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.sunshine.presentation.forecast.ForecastViewModel
 import com.example.sunshine.presentation.forecast.ForecastViewModel.ViewState
+import com.example.sunshine.presentation.model.ForecastView
 import com.example.sunshine.ui.theme.SunshineTheme
 import timber.log.Timber
 
@@ -37,23 +38,42 @@ fun ForecastView(state: ViewState) {
                 SunshineToolbar {
                     Timber.d("To implement in the next version")
                 }
-                for (item in data) {
-                    WeatherItem(modifier = Modifier, forecast = item) {
-                        Timber.d("To implement in the next version")
+                data.forEachIndexed { index, forecast ->
+                    when (index) {
+                        0 -> {
+                            TodayWeatherItem(forecast)
+                        }
+                        else -> {
+                            ForecastItem(modifier = Modifier, forecast = forecast) {
+                                Timber.d("To implement in the next version")
+                            }
+                            Divider()
+                        }
                     }
-                    Divider()
                 }
             }
         }
         is ViewState.Error -> Text(text = "${state.exception}")
     }
-
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     SunshineTheme {
-        ForecastView(state = ViewState.Loading)
+        ForecastView(
+            state = ViewState.Success(
+                data = listOf(
+                    ForecastView(
+                        dateTxt = "",
+                        date = 0,
+                        tempMin = 0.0,
+                        tempMax = 0.0,
+                        description = "",
+                        icon = 500
+                    )
+                )
+            )
+        )
     }
 }
