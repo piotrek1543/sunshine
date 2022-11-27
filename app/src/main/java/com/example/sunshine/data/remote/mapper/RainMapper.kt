@@ -15,5 +15,4 @@ open class RainMapper @Inject constructor() : Mapper<RainModel, Rain> {
      */
     override fun mapFromRemote(type: RainModel): Rain =
         Rain(in3h = type.in3h, listDt = type.listDt)
-
 }

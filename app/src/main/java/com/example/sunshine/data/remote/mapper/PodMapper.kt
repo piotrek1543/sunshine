@@ -14,5 +14,4 @@ open class PodMapper @Inject constructor() : Mapper<PodModel, Pod> {
      * Map an instance of a [PodModel] to a [Pod] model
      */
     override fun mapFromRemote(type: PodModel): Pod = Pod(pod = type.pod, listDt = type.listDt)
-
 }

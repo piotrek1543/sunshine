@@ -42,5 +42,4 @@ open class ListMapper @Inject constructor(
             dtTxt = type.dtTxt
         )
     }
-
 }

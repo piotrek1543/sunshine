@@ -8,13 +8,19 @@ import com.example.sunshine.data.db.constants.CloudsConstants
 /**
  * Model used solely for the caching of a [Clouds]
  */
-@Entity(tableName = CloudsConstants.TABLE_NAME,
-        foreignKeys = [ForeignKey(entity = CachedWeather::class,
-                parentColumns = ["listDt"],
-                childColumns = ["listDt"],
-                onDelete = ForeignKey.CASCADE)])
+@Entity(
+    tableName = CloudsConstants.TABLE_NAME,
+    foreignKeys = [
+        ForeignKey(
+            entity = CachedWeather::class,
+            parentColumns = ["listDt"],
+            childColumns = ["listDt"],
+            onDelete = ForeignKey.CASCADE
+        )
+    ]
+)
 data class CachedClouds(
-        @PrimaryKey
-        var listDt: Long? = null,
-        var all: Int? = null
+    @PrimaryKey
+    var listDt: Long? = null,
+    var all: Int? = null
 )

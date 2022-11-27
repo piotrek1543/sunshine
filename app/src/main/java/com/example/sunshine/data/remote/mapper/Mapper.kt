@@ -10,5 +10,4 @@ package com.example.sunshine.data.remote.mapper
 interface Mapper<in M, out E> {
 
     fun mapFromRemote(type: M): E
-
 }

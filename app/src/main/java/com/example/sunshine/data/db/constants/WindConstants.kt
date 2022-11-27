@@ -10,5 +10,4 @@ object WindConstants {
     const val QUERY_WIND = "SELECT * FROM $TABLE_NAME"
 
     const val DELETE_ALL_WINDS = "DELETE FROM $TABLE_NAME"
-
 }

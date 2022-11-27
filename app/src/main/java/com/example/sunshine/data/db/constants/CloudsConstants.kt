@@ -10,5 +10,4 @@ object CloudsConstants {
     const val QUERY_CLOUDS = "SELECT * FROM $TABLE_NAME"
 
     const val DELETE_ALL_CLOUDS = "DELETE FROM $TABLE_NAME"
-
 }

@@ -18,5 +18,4 @@ interface CachedCityDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCity(cachedCity: CachedCity?)
-
 }

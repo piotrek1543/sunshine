@@ -6,7 +6,6 @@ import android.content.Context
 import com.example.sunshine.R
 import timber.log.Timber
 
-
 /**
  * Contains useful utilities for a weather app, such as conversion between Celsius and Fahrenheit,
  * from kph to mph, and from degrees to NSEW.  It also contains the mapping of weather condition
@@ -210,6 +209,5 @@ object SunshineWeatherUtils {
                 R.drawable.art_storm
             }
         }
-
     }
 }

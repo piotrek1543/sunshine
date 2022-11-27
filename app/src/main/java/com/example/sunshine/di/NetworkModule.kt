@@ -1,6 +1,5 @@
 package com.example.sunshine.di
 
-
 import com.example.sunshine.data.remote.Constants
 import com.example.sunshine.data.remote.ForecastService
 import dagger.Module

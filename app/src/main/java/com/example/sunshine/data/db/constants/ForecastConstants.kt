@@ -10,5 +10,4 @@ object ForecastConstants {
     const val QUERY_FORECAST = "SELECT * FROM $TABLE_NAME"
 
     const val DELETE_ALL_FORECASTS = "DELETE FROM $TABLE_NAME"
-
 }

@@ -65,5 +65,4 @@ abstract class SunshineDatabase : RoomDatabase() {
     abstract fun cachedWeatherDao(): CachedWeatherDao
 
     abstract fun cachedWindDao(): CachedWindDao
-
 }

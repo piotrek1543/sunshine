@@ -10,5 +10,4 @@ object SnowConstants {
     const val QUERY_SNOW = "SELECT * FROM $TABLE_NAME"
 
     const val DELETE_ALL_SNOWS = "DELETE FROM $TABLE_NAME"
-
 }

@@ -24,5 +24,4 @@ open class CachedForecastMapper @Inject constructor() :
     override fun mapFromCached(type: CachedForecast): Forecast {
         return Forecast(cod = type.cod, cnt = type.cnt, message = type.message)
     }
-
 }

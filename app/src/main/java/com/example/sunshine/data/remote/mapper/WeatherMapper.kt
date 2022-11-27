@@ -20,5 +20,4 @@ open class WeatherMapper @Inject constructor() : Mapper<WeatherModel, Weather> {
         icon = type.icon,
         listDt = type.listDt
     )
-
 }

@@ -17,5 +17,4 @@ open class CloudsMapper @Inject constructor() : Mapper<CloudsModel, Clouds> {
         all = type.all,
         listDt = type.listDt
     )
-
 }

@@ -18,5 +18,4 @@ interface CachedForecastDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertForecast(cachedForecast: CachedForecast)
-
 }

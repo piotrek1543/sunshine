@@ -10,5 +10,4 @@ object CoordConstants {
     const val QUERY_COORD = "SELECT * FROM $TABLE_NAME"
 
     const val DELETE_ALL_COORDS = "DELETE FROM $TABLE_NAME"
-
 }

@@ -14,9 +14,10 @@ open class CityMapper @Inject constructor(private val coordMapper: CoordMapper) 
      * Map an instance of a [CityModel] to a [City] model
      */
     override fun mapFromRemote(type: CityModel): City = City(
-            id = type.id,
-            name = type.name,
-            country = type.country,
-            population = type.population,
-            coord = type.coord?.let { coordMapper.mapFromRemote(it) })
+        id = type.id,
+        name = type.name,
+        country = type.country,
+        population = type.population,
+        coord = type.coord?.let { coordMapper.mapFromRemote(it) }
+    )
 }

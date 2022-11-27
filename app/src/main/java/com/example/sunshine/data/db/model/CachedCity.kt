@@ -9,10 +9,10 @@ import com.example.sunshine.data.db.constants.CityConstants
  */
 @Entity(tableName = CityConstants.TABLE_NAME)
 data class CachedCity(
-        @PrimaryKey
-        var id: Int = 1000,
-        var name: String? = null,
-        //var cachedCoord: CachedCoord? = null,
-        var country: String? = null,
-        var population: Int? = null
+    @PrimaryKey
+    var id: Int = 1000,
+    var name: String? = null,
+    // var cachedCoord: CachedCoord? = null,
+    var country: String? = null,
+    var population: Int? = null
 )

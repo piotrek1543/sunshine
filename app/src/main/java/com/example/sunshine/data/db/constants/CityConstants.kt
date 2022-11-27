@@ -10,5 +10,4 @@ object CityConstants {
     const val QUERY_CITY = "SELECT * FROM $TABLE_NAME"
 
     const val DELETE_ALL_CITIES = "DELETE FROM $TABLE_NAME"
-
 }

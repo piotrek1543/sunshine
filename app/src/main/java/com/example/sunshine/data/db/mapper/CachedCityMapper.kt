@@ -2,8 +2,8 @@ package com.example.sunshine.data.db.mapper
 
 import com.example.sunshine.data.db.model.CachedCity
 import com.example.sunshine.domain.model.City
-import java.util.*
 import javax.inject.Inject
+import kotlin.random.Random
 
 private const val CACHED_CITY_ID_BOUND = 100_000
 /**
@@ -18,10 +18,10 @@ open class CachedCityMapper @Inject constructor() :
      */
     override fun mapToCached(type: City): CachedCity {
         return CachedCity(
-                id = type.id ?: Random().nextInt(CACHED_CITY_ID_BOUND),
-                name = type.name,
-                country = type.country,
-                population = type.population
+            id = type.id ?: Random.nextInt(CACHED_CITY_ID_BOUND),
+            name = type.name,
+            country = type.country,
+            population = type.population
         )
     }
 
@@ -30,11 +30,10 @@ open class CachedCityMapper @Inject constructor() :
      */
     override fun mapFromCached(type: CachedCity): City {
         return City(
-                id = type.id,
-                name = type.name,
-                country = type.country,
-                population = type.population
+            id = type.id,
+            name = type.name,
+            country = type.country,
+            population = type.population
         )
     }
-
 }

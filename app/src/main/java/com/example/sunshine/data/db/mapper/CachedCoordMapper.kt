@@ -15,18 +15,17 @@ open class CachedCoordMapper @Inject constructor() :
      * Map a [Coord] instance to a [CachedCoord] instance
      */
     override fun mapToCached(type: Coord) = CachedCoord(
-            cityId = type.cityId,
-            lat = type.lat,
-            lon = type.lon
+        cityId = type.cityId,
+        lat = type.lat,
+        lon = type.lon
     )
 
     /**
      * Map a [CachedCoord] instance to a [Coord] instance
      */
     override fun mapFromCached(type: CachedCoord): Coord = Coord(
-            cityId = type.cityId,
-            lat = type.lat,
-            lon = type.lon
+        cityId = type.cityId,
+        lat = type.lat,
+        lon = type.lon
     )
-
 }

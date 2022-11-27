@@ -18,5 +18,4 @@ open class WindMapper @Inject constructor() : Mapper<WindModel, Wind> {
         deg = type.deg,
         listDt = type.listDt
     )
-
 }

@@ -18,5 +18,4 @@ interface CachedWindDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertWind(cachedWind: List<CachedWind>?)
-
 }

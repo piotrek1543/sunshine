@@ -34,5 +34,4 @@ open class CachedWeatherMapper @Inject constructor() :
             icon = type.icon,
             listDt = type.listDt
         )
-
 }

@@ -24,5 +24,4 @@ open class MainMapper @Inject constructor() : Mapper<MainModel, Main> {
         tempKf = type.tempKf,
         listDt = type.listDt
     )
-
 }

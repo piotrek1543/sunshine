@@ -18,5 +18,4 @@ interface CachedCoordDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCoord(cachedCoord: CachedCoord?)
-
 }

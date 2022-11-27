@@ -22,5 +22,4 @@ open class CachedCloudsMapper @Inject constructor() :
      */
     override fun mapFromCached(type: CachedClouds): Clouds =
         Clouds(all = type.all, listDt = type.listDt)
-
 }

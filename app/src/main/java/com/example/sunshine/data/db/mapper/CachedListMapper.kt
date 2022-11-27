@@ -26,5 +26,4 @@ open class CachedListMapper @Inject constructor() :
         dt = type.dt,
         dtTxt = type.dtTxt
     )
-
 }

@@ -18,5 +18,4 @@ interface CachedCloudsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertClouds(cachedClouds: List<CachedClouds>?)
-
 }

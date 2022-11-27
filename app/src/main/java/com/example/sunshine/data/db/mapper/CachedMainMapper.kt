@@ -40,5 +40,4 @@ open class CachedMainMapper @Inject constructor() :
         tempKf = type.tempKf,
         listDt = type.listDt
     )
-
 }

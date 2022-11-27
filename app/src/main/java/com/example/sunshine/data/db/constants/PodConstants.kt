@@ -10,5 +10,4 @@ object PodConstants {
     const val QUERY_POD = "SELECT * FROM $TABLE_NAME"
 
     const val DELETE_ALL_PODS = "DELETE FROM $TABLE_NAME"
-
 }

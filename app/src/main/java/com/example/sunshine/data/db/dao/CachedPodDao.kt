@@ -18,5 +18,4 @@ interface CachedPodDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPod(cachedPod: List<CachedPod>?)
-
 }

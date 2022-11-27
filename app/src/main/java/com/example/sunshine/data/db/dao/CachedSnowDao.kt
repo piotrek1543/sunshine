@@ -18,5 +18,4 @@ interface CachedSnowDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSnow(cachedSnow: List<CachedSnow>?)
-
 }

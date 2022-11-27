@@ -19,7 +19,8 @@ import android.content.Context
 import android.text.format.DateUtils
 import com.example.sunshine.R
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
+import java.util.TimeZone
 import java.util.concurrent.TimeUnit
 
 /**
@@ -135,9 +136,11 @@ object SunshineDateUtils {
         val daysFromEpochToToday = elapsedDaysSinceEpoch(System.currentTimeMillis())
         val dayName = getDayName(context, date)
         val localizedDayName = SimpleDateFormat("EEEE", Locale.ENGLISH).format(date)
-        var flags = (DateUtils.FORMAT_NO_YEAR
+        var flags = (
+            DateUtils.FORMAT_NO_YEAR
                 or DateUtils.FORMAT_SHOW_WEEKDAY
-                or DateUtils.FORMAT_SHOW_TIME)
+                or DateUtils.FORMAT_SHOW_TIME
+            )
         var readableDate = getReadableDateString(context, date, flags)
 
         return if (daysFromEpochToProvidedDate == daysFromEpochToToday) {
@@ -158,10 +161,12 @@ object SunshineDateUtils {
                  * https://developer.android.com/reference/android/text/format/DateFormat.html#getBestDateTimePattern
                  */
                 if (isFirst)
-                    flags = (DateUtils.FORMAT_SHOW_DATE
+                    flags = (
+                        DateUtils.FORMAT_SHOW_DATE
                             or DateUtils.FORMAT_NO_YEAR
                             or DateUtils.FORMAT_SHOW_WEEKDAY
-                            or DateUtils.FORMAT_SHOW_TIME)
+                            or DateUtils.FORMAT_SHOW_TIME
+                        )
 
                 readableDate = getReadableDateString(context, date, flags)
                 readableDate.replace(localizedDayName, dayName)
@@ -172,11 +177,13 @@ object SunshineDateUtils {
             /* If the input date is less than a week in the future, just return the day name. */
             readableDate.replace(localizedDayName, dayName)
         } else {
-            flags = (DateUtils.FORMAT_SHOW_DATE
+            flags = (
+                DateUtils.FORMAT_SHOW_DATE
                     or DateUtils.FORMAT_ABBREV_WEEKDAY
                     or DateUtils.FORMAT_NO_YEAR
                     or DateUtils.FORMAT_SHOW_WEEKDAY
-                    or DateUtils.FORMAT_SHOW_TIME)
+                    or DateUtils.FORMAT_SHOW_TIME
+                )
 
             DateUtils.formatDateTime(context, date, flags)
         }

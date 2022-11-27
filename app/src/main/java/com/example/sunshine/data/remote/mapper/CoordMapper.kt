@@ -14,5 +14,4 @@ open class CoordMapper @Inject constructor() : Mapper<CoordModel, Coord> {
      * Map an instance of a [CoordModel] to a [Coord] model
      */
     override fun mapFromRemote(type: CoordModel): Coord = Coord(lat = type.lat, lon = type.lon)
-
 }

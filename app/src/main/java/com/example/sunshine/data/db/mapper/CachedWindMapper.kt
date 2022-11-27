@@ -28,5 +28,4 @@ open class CachedWindMapper @Inject constructor() :
         deg = type.deg,
         listDt = type.listDt
     )
-
 }
