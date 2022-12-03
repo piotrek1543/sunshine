@@ -8,9 +8,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.sunshine.ui.forecast.ForecastViewComposable
-import com.example.sunshine.ui.forecast.ForecastViewModel
 import com.example.sunshine.ui.theme.SunshineTheme
+import com.example.sunshine.ui.weather.WeatherViewComposable
+import com.example.sunshine.ui.weather.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,8 +25,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 
-                    val viewModel = hiltViewModel<ForecastViewModel>()
-                    ForecastViewComposable(viewModel = viewModel)
+                    val viewModel = hiltViewModel<WeatherViewModel>()
+                    WeatherViewComposable(viewModel = viewModel)
                 }
             }
         }

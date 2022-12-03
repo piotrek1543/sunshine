@@ -1,4 +1,4 @@
-package com.example.sunshine.ui.forecast
+package com.example.sunshine.ui.weather
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ForecastViewModel @Inject constructor(
+class WeatherViewModel @Inject constructor(
     private val repository: WeatherRepository,
 ) : ViewModel() {
 
