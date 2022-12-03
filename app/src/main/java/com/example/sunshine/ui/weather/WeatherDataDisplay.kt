@@ -11,8 +11,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.sunshine.R
+import com.example.sunshine.domain.weather.WeatherData
+import com.example.sunshine.ui.theme.SunshineTheme
+import java.time.LocalDateTime
 
 @Composable
 fun WeatherDataDisplay(
@@ -37,6 +43,28 @@ fun WeatherDataDisplay(
         Text(
             text = "$value$unit",
             style = textStyle
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewWeatherDataDisplay() {
+    SunshineTheme {
+        val data = WeatherData(
+            time = LocalDateTime.now(),
+            weatherCode = 0,
+            pressure = 0.0,
+            temperatureCelsius = 0.0,
+            windSpeed = 0.0,
+            humidity = 0,
+        )
+        WeatherDataDisplay(
+            value = data.windSpeed?.toInt(),
+            unit = "km/h",
+            icon = ImageVector.vectorResource(id = R.drawable.ic_wind),
+            iconTint = Color.White,
+            textStyle = TextStyle(color = Color.White)
         )
     }
 }

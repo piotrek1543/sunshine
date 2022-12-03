@@ -76,7 +76,7 @@ fun WeatherView(
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+fun PreviewWeatherView() {
     SunshineTheme {
         WeatherView(
             state = ViewState.Success(

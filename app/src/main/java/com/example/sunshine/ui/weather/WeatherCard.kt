@@ -18,14 +18,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.sunshine.R
 import com.example.sunshine.domain.weather.WeatherData
 import com.example.sunshine.ui.model.WeatherType
+import com.example.sunshine.ui.theme.DarkBlue
+import com.example.sunshine.ui.theme.SunshineTheme
 import com.example.sunshine.ui.utils.formattedTime
+import java.time.LocalDateTime
 import kotlin.math.roundToInt
 
 @Composable
@@ -60,7 +65,10 @@ fun WeatherCard(
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
-                text = "${data.temperatureCelsius}°C",
+                text = stringResource(
+                    id = R.string.format_temperature,
+                    data.temperatureCelsius ?: 0.0
+                ),
                 fontSize = 50.sp,
                 color = Color.White
             )
@@ -98,5 +106,23 @@ fun WeatherCard(
                 )
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewWeatherCard() {
+    SunshineTheme {
+        WeatherCard(
+            data = WeatherData(
+                time = LocalDateTime.now(),
+                weatherCode = 0,
+                pressure = 0.0,
+                temperatureCelsius = 0.0,
+                windSpeed = 0.0,
+                humidity = 0,
+            ),
+            backgroundColor = DarkBlue
+        )
     }
 }
