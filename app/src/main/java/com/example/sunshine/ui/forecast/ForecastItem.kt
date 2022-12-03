@@ -18,36 +18,27 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.sunshine.R
-import com.example.sunshine.presentation.model.ForecastView
+import com.example.sunshine.domain.weather.WeatherData
+import com.example.sunshine.ui.model.WeatherType
 import com.example.sunshine.ui.utils.SunshineDateUtils
-import com.example.sunshine.ui.utils.SunshineWeatherUtils
-
-private const val TIME_UNIT_MILLIS = 1_000L
 
 @Composable
 fun ForecastItem(
     modifier: Modifier = Modifier,
-    forecast: ForecastView,
-    isMetric: Boolean = true,
-    onItemSelected: () -> Unit,
+    data: WeatherData,
+    onItemSelected: (WeatherData) -> Unit,
 ) {
     ConstraintLayout(
         modifier = modifier
             .fillMaxWidth()
             .padding(vertical = 12.dp, horizontal = 16.dp)
-            .clickable { onItemSelected() },
+            .clickable { onItemSelected(data) },
     ) {
         val (icon, description, tempMax, tempMin) = createRefs()
-
-        val context = LocalContext.current
-        val formattedTempMin =
-            SunshineWeatherUtils.formatTemperature(context, forecast.tempMin, isMetric)
-        val formattedTempMax =
-            SunshineWeatherUtils.formatTemperature(context, forecast.tempMax, isMetric)
-        val imageResId = SunshineWeatherUtils.getResourceIdForWeatherCondition(forecast.icon)
+        val weatherType = WeatherType.of(data.weatherCode)
 
         Image(
-            painter = painterResource(id = imageResId),
+            painter = painterResource(id = weatherType.iconRes),
             modifier = Modifier
                 .size(40.dp)
                 .constrainAs(icon) {
@@ -65,14 +56,11 @@ fun ForecastItem(
         ) {
             val formattedDate = SunshineDateUtils.getFriendlyDateString(
                 LocalContext.current,
-                forecast.date * TIME_UNIT_MILLIS,
+                data.time,
                 false,
             )
-            val formattedDescription = stringResource(
-                id = SunshineWeatherUtils.getStringIdForWeatherCondition(forecast.icon)
-            )
             Text(text = formattedDate, style = TextStyle(fontSize = 16.sp))
-            Text(text = formattedDescription, style = TextStyle(fontSize = 16.sp))
+            Text(text = weatherType.weatherDesc, style = TextStyle(fontSize = 16.sp))
         }
         Text(
             modifier = Modifier
@@ -80,7 +68,7 @@ fun ForecastItem(
                 .constrainAs(tempMax) {
                     end.linkTo(tempMin.start)
                 },
-            text = formattedTempMax,
+            text = data.temperatureCelsius.toString(),
             style = TextStyle(fontSize = 28.sp),
         )
         Text(
@@ -88,7 +76,7 @@ fun ForecastItem(
                 .constrainAs(tempMin) {
                     end.linkTo(parent.end)
                 },
-            text = formattedTempMin,
+            text = data.temperatureCelsius.toString(),
             style = TextStyle(fontSize = 28.sp),
         )
     }

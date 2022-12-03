@@ -19,6 +19,8 @@ import android.content.Context
 import android.text.format.DateUtils
 import com.example.sunshine.R
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.ZoneOffset
 import java.util.Locale
 import java.util.TimeZone
 import java.util.concurrent.TimeUnit
@@ -111,7 +113,9 @@ object SunshineDateUtils {
      * @return A user-friendly representation of the date such as "Today, June 8", "Tomorrow",
      * or "Friday"
      */
-    fun getFriendlyDateString(context: Context, date: Long, isFirst: Boolean = false): String {
+    fun getFriendlyDateString(context: Context, date: LocalDateTime?, isFirst: Boolean = false): String {
+
+        val date = (date ?: LocalDateTime.now()).atZone(ZoneOffset.UTC).toInstant().toEpochMilli()
 
         /*
          * NOTE: localDate should be localDateMidnightMillis and should be straight from the
@@ -156,7 +160,7 @@ object SunshineDateUtils {
                  * and use it to replace the date from DateUtils. This isn't guaranteed to work,
                  * but our testing so far has been conclusively positive.
                  *
-                 * For information on a simpler API to use (on API > 18), please check out the
+                 * For information on a simpler API to use (on API > 18), please c4heck out the
                  * documentation on DateFormat#getBestDateTimePattern(Locale, String)
                  * https://developer.android.com/reference/android/text/format/DateFormat.html#getBestDateTimePattern
                  */

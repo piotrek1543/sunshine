@@ -21,38 +21,30 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.sunshine.R
-import com.example.sunshine.presentation.model.ForecastView
+import com.example.sunshine.domain.weather.WeatherData
+import com.example.sunshine.ui.model.WeatherType
 import com.example.sunshine.ui.theme.SunshineTheme
 import com.example.sunshine.ui.utils.SunshineDateUtils
-import com.example.sunshine.ui.utils.SunshineWeatherUtils
-
-private const val TIME_UNIT_MILLIS = 1_000L
+import java.time.LocalDateTime
 
 @Composable
 fun TodayWeatherItem(
-    data: ForecastView,
-    isMetric: Boolean = true
+    modifier: Modifier = Modifier,
+    data: WeatherData,
 ) {
     ConstraintLayout(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .background(color = MaterialTheme.colors.primary),
     ) {
         val (date, icon, tempMin, tempMax, description) = createRefs()
-        val context = LocalContext.current
+        val weatherType = WeatherType.of(data.weatherCode)
         val formattedDate = SunshineDateUtils.getFriendlyDateString(
-            LocalContext.current,
-            data.date * TIME_UNIT_MILLIS,
-            true,
+            context = LocalContext.current,
+            date = data.time,
+            isFirst = true,
         )
-        val formattedDescription = stringResource(
-            id = SunshineWeatherUtils.getStringIdForWeatherCondition(data.icon)
-        )
-        val formattedTempMin =
-            SunshineWeatherUtils.formatTemperature(context, data.tempMin, isMetric)
-        val formattedTempMax =
-            SunshineWeatherUtils.formatTemperature(context, data.tempMax, isMetric)
-        val imageResId = SunshineWeatherUtils.getResourceIdForWeatherCondition(data.icon)
+
         Text(
             modifier = Modifier
                 .fillMaxWidth()
@@ -77,7 +69,7 @@ fun TodayWeatherItem(
                     top.linkTo(date.bottom)
                     start.linkTo(parent.start)
                 },
-            painter = painterResource(id = imageResId),
+            painter = painterResource(id = weatherType.iconRes),
             contentScale = ContentScale.Fit,
             contentDescription = stringResource(id = R.string.accessibility_weather_icon),
         )
@@ -89,7 +81,7 @@ fun TodayWeatherItem(
                     bottom.linkTo(icon.bottom)
                     end.linkTo(parent.end)
                 },
-            text = formattedTempMax,
+            text = data.temperatureCelsius.toString(),
             style = TextStyle(
                 color = Color.White,
                 fontSize = 72.sp,
@@ -104,7 +96,7 @@ fun TodayWeatherItem(
                     end.linkTo(tempMax.end)
                     start.linkTo(tempMax.start)
                 },
-            text = formattedTempMin,
+            text = data.temperatureCelsius.toString(),
             style = TextStyle(
                 color = Color.White,
                 fontSize = 36.sp,
@@ -119,7 +111,7 @@ fun TodayWeatherItem(
                     bottom.linkTo(tempMin.bottom)
                     start.linkTo(icon.start)
                 },
-            text = formattedDescription,
+            text = weatherType.weatherDesc,
             style = TextStyle(
                 color = Color.White,
                 fontSize = 20.sp,
@@ -132,13 +124,13 @@ fun TodayWeatherItem(
 @Preview(showBackground = true)
 @Composable
 fun PreviewTodayWeatherItem() {
-    val data = ForecastView(
-        dateTxt = "",
-        date = 0,
-        tempMin = 0.0,
-        tempMax = 0.0,
-        description = "",
-        icon = 500
+    val data = WeatherData(
+        time = LocalDateTime.now(),
+        temperatureCelsius = 0.0,
+        pressure = 0.0,
+        humidity = 0,
+        windSpeed = 0.0,
+        weatherCode = 0,
     )
     SunshineTheme {
         TodayWeatherItem(

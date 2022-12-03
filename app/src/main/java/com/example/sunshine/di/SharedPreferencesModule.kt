@@ -10,6 +10,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+const val SHARED_PREFERENCE_DEFAULT = "DEFAULT_SHARED_PREFERENCES"
+
 @Module
 @InstallIn(SingletonComponent::class)
 class SharedPreferencesModule {
@@ -17,6 +19,6 @@ class SharedPreferencesModule {
     @Provides
     @Singleton
     fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
-        return context.getSharedPreferences("DEFAULT_SHARED_PREFERENCES", MODE_PRIVATE)
+        return context.getSharedPreferences(SHARED_PREFERENCE_DEFAULT, MODE_PRIVATE)
     }
 }
