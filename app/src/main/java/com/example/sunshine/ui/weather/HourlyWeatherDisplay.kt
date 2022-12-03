@@ -62,6 +62,7 @@ fun HourlyWeatherDisplay(
 fun PreviewHourlyWeatherDisplay() {
     SunshineTheme {
         val item = WeatherData(
+            id = 0,
             time = LocalDateTime.now(),
             weatherCode = 0,
             pressure = 0.0,

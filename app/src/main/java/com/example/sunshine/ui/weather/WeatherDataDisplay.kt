@@ -52,6 +52,7 @@ fun WeatherDataDisplay(
 fun PreviewWeatherDataDisplay() {
     SunshineTheme {
         val data = WeatherData(
+            id = 0,
             time = LocalDateTime.now(),
             weatherCode = 0,
             pressure = 0.0,

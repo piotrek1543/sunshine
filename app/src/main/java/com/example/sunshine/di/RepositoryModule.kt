@@ -1,7 +1,7 @@
 package com.example.sunshine.di
 
-import com.example.sunshine.data.repository.WeatherRepositoryImpl
-import com.example.sunshine.domain.repository.WeatherRepository
+import com.example.sunshine.data.repository.ForecastRepositoryImpl
+import com.example.sunshine.domain.repository.ForecastRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,6 +17,6 @@ interface RepositoryModule {
     @Binds
     @Singleton
     fun bindWeatherRepository(
-        weatherRepositoryImpl: WeatherRepositoryImpl
-    ): WeatherRepository
+        weatherRepositoryImpl: ForecastRepositoryImpl
+    ): ForecastRepository
 }

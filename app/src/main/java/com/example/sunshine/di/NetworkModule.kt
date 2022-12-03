@@ -1,6 +1,6 @@
 package com.example.sunshine.di
 
-import com.example.sunshine.data.remote.WeatherApi
+import com.example.sunshine.data.remote.service.ForecastService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,7 +39,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideForecastService(retrofit: Retrofit): WeatherApi =
+    fun provideForecastService(retrofit: Retrofit): ForecastService =
         retrofit.create()
 
     companion object {

@@ -2,7 +2,7 @@ package com.example.sunshine.ui.weather
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.sunshine.domain.repository.WeatherRepository
+import com.example.sunshine.domain.repository.ForecastRepository
 import com.example.sunshine.domain.util.Resource
 import com.example.sunshine.domain.weather.WeatherInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class WeatherViewModel @Inject constructor(
-    private val repository: WeatherRepository,
+    private val repository: ForecastRepository,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<ViewState>(ViewState.Loading)

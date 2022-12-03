@@ -1,4 +1,4 @@
-package com.example.sunshine.data.remote
+package com.example.sunshine.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 
