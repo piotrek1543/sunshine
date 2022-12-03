@@ -26,8 +26,12 @@ class WeatherViewModel @Inject constructor(
     private fun getForecast() {
         viewModelScope.launch {
             _state.emit(ViewState.Loading)
-            @Suppress("MagicNumber", "ComplexMethod")
-            when (val result = repository.getWeatherData(52.40692, 16.92993)) {
+            when (
+                val result = repository.getWeatherData(
+                    lat = DEFAULT_LOCATION_LATITUDE,
+                    long = DEFAULT_LOCATION_LONGITUDE,
+                )
+            ) {
                 is Resource.Success -> {
                     _state.emit(ViewState.Success(result.data))
                 }
@@ -47,5 +51,11 @@ class WeatherViewModel @Inject constructor(
         data class Error(
             val exception: Exception,
         ) : ViewState()
+    }
+
+    companion object {
+        // todo - Replace it with LocationTracker
+        private const val DEFAULT_LOCATION_LATITUDE = 52.40692
+        private const val DEFAULT_LOCATION_LONGITUDE = 16.92993
     }
 }

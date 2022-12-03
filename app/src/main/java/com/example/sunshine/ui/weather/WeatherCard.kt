@@ -50,8 +50,9 @@ fun WeatherCard(
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            val today = stringResource(id = R.string.today)
             Text(
-                text = "Today ${data.time?.formattedTime}",
+                text = "$today ${data.time?.formattedTime}",
                 modifier = Modifier.align(Alignment.End),
                 color = Color.White
             )

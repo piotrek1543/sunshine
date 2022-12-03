@@ -6,6 +6,7 @@ import com.example.sunshine.domain.repository.WeatherRepository
 import com.example.sunshine.domain.util.Resource
 import com.example.sunshine.domain.weather.WeatherInfo
 import timber.log.Timber
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(
@@ -21,7 +22,7 @@ class WeatherRepositoryImpl @Inject constructor(
                     long = long
                 ).toWeatherInfo()
             )
-        } catch (e: RuntimeException) {
+        } catch (e: UnknownHostException) {
             Timber.e(e)
             Resource.Error(e.message ?: "An unknown error occurred.")
         }
