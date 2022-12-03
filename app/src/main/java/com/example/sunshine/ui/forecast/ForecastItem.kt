@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -34,7 +33,7 @@ fun ForecastItem(
             .padding(vertical = 12.dp, horizontal = 16.dp)
             .clickable { onItemSelected(data) },
     ) {
-        val (icon, description, tempMax, tempMin) = createRefs()
+        val (icon, description, temperature) = createRefs()
         val weatherType = WeatherType.of(data.weatherCode)
 
         Image(
@@ -44,7 +43,6 @@ fun ForecastItem(
                 .constrainAs(icon) {
                     start.linkTo(parent.start)
                 },
-            contentScale = ContentScale.Crop,
             contentDescription = stringResource(id = R.string.accessibility_weather_icon),
         )
         Column(
@@ -64,19 +62,10 @@ fun ForecastItem(
         }
         Text(
             modifier = Modifier
-                .padding(end = 16.dp)
-                .constrainAs(tempMax) {
-                    end.linkTo(tempMin.start)
-                },
-            text = data.temperatureCelsius.toString(),
-            style = TextStyle(fontSize = 28.sp),
-        )
-        Text(
-            modifier = Modifier
-                .constrainAs(tempMin) {
+                .constrainAs(temperature) {
                     end.linkTo(parent.end)
                 },
-            text = data.temperatureCelsius.toString(),
+            text = stringResource(id = R.string.format_temperature, data.temperatureCelsius ?: 0.0),
             style = TextStyle(fontSize = 28.sp),
         )
     }

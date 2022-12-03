@@ -37,7 +37,7 @@ fun TodayWeatherItem(
             .fillMaxWidth()
             .background(color = MaterialTheme.colors.primary),
     ) {
-        val (date, icon, tempMin, tempMax, description) = createRefs()
+        val (date, icon, temperature, description) = createRefs()
         val weatherType = WeatherType.of(data.weatherCode)
         val formattedDate = SunshineDateUtils.getFriendlyDateString(
             context = LocalContext.current,
@@ -76,12 +76,12 @@ fun TodayWeatherItem(
         Text(
             modifier = Modifier
                 .padding(end = 40.dp)
-                .constrainAs(tempMax) {
+                .constrainAs(temperature) {
                     top.linkTo(icon.top)
-                    bottom.linkTo(icon.bottom)
+                    bottom.linkTo(description.bottom)
                     end.linkTo(parent.end)
                 },
-            text = data.temperatureCelsius.toString(),
+            text = stringResource(id = R.string.format_temperature, data.temperatureCelsius ?: 0.0),
             style = TextStyle(
                 color = Color.White,
                 fontSize = 72.sp,
@@ -90,25 +90,9 @@ fun TodayWeatherItem(
         )
         Text(
             modifier = Modifier
-                .padding(end = 40.dp, bottom = 20.dp)
-                .constrainAs(tempMin) {
-                    top.linkTo(icon.bottom)
-                    end.linkTo(tempMax.end)
-                    start.linkTo(tempMax.start)
-                },
-            text = data.temperatureCelsius.toString(),
-            style = TextStyle(
-                color = Color.White,
-                fontSize = 36.sp,
-                textAlign = TextAlign.Center,
-            ),
-        )
-        Text(
-            modifier = Modifier
                 .padding(start = 40.dp, bottom = 20.dp)
                 .constrainAs(description) {
-                    top.linkTo(tempMin.top)
-                    bottom.linkTo(tempMin.bottom)
+                    top.linkTo(icon.bottom)
                     start.linkTo(icon.start)
                 },
             text = weatherType.weatherDesc,

@@ -33,9 +33,6 @@ fun ForecastView(state: ViewState) {
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
             ) {
-                SunshineToolbar {
-                    Timber.d("To implement in the next version")
-                }
                 data?.currentWeatherData?.let { data ->
                     TodayWeatherItem(data = data)
                 }
