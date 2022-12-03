@@ -71,6 +71,7 @@ fun PreviewHourlyWeatherDisplay() {
         )
         HourlyWeatherDisplay(
             data = item,
+            textColor = Color.DarkGray
         )
     }
 }

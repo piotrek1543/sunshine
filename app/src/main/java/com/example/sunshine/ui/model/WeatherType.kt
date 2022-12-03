@@ -1,144 +1,150 @@
 package com.example.sunshine.ui.model
 
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import com.example.sunshine.R
 
 sealed class WeatherType(
-    val weatherDesc: String,
+    @StringRes val descriptionRes: Int,
     @DrawableRes val iconRes: Int
 ) {
     object ClearSky : WeatherType(
-        weatherDesc = "Clear sky",
+        descriptionRes = R.string.weather_type_clear_sky_,
         iconRes = R.drawable.ic_sunny
     )
 
     object MainlyClear : WeatherType(
-        weatherDesc = "Mainly clear",
+        descriptionRes = R.string.weather_type_mainly_clear,
         iconRes = R.drawable.ic_cloudy
     )
 
     object PartlyCloudy : WeatherType(
-        weatherDesc = "Partly cloudy",
+        descriptionRes = R.string.weather_type_partly_cloudy,
         iconRes = R.drawable.ic_cloudy
     )
 
     object Overcast : WeatherType(
-        weatherDesc = "Overcast",
+        descriptionRes = R.string.weather_type_overcast,
         iconRes = R.drawable.ic_cloudy
     )
 
     object Foggy : WeatherType(
-        weatherDesc = "Foggy",
+        descriptionRes = R.string.weather_type_foggy,
         iconRes = R.drawable.ic_very_cloudy
     )
 
     object DepositingRimeFog : WeatherType(
-        weatherDesc = "Depositing rime fog",
+        descriptionRes = R.string.weather_type_depositing_rime_fog,
         iconRes = R.drawable.ic_very_cloudy
     )
 
     object LightDrizzle : WeatherType(
-        weatherDesc = "Light drizzle",
+        descriptionRes = R.string.weather_type_light_drizzle,
         iconRes = R.drawable.ic_rainshower
     )
 
     object ModerateDrizzle : WeatherType(
-        weatherDesc = "Moderate drizzle",
+        descriptionRes = R.string.weather_type_moderate_drizzle,
         iconRes = R.drawable.ic_rainshower
     )
 
     object DenseDrizzle : WeatherType(
-        weatherDesc = "Dense drizzle",
+        descriptionRes = R.string.weather_type_dense_drizzle,
         iconRes = R.drawable.ic_rainshower
     )
 
     object LightFreezingDrizzle : WeatherType(
-        weatherDesc = "Slight freezing drizzle",
+        descriptionRes = R.string.weather_type_slight_freezing_drizzle,
         iconRes = R.drawable.ic_snowyrainy
     )
 
     object DenseFreezingDrizzle : WeatherType(
-        weatherDesc = "Dense freezing drizzle",
+        descriptionRes = R.string.weather_type_dense_freezing_drizzle,
         iconRes = R.drawable.ic_snowyrainy
     )
 
     object SlightRain : WeatherType(
-        weatherDesc = "Slight rain",
+        descriptionRes = R.string.weather_type_slight_rain,
         iconRes = R.drawable.ic_rainy
     )
 
     object ModerateRain : WeatherType(
-        weatherDesc = "Rainy",
+        descriptionRes = R.string.weather_type_rainy,
         iconRes = R.drawable.ic_rainy
     )
 
     object HeavyRain : WeatherType(
-        weatherDesc = "Heavy rain",
+        descriptionRes = R.string.weather_type_heavy_rain,
         iconRes = R.drawable.ic_rainy
     )
 
     object HeavyFreezingRain : WeatherType(
-        weatherDesc = "Heavy freezing rain",
+        descriptionRes = R.string.weather_type_heavy_freezing_rain,
         iconRes = R.drawable.ic_snowyrainy
     )
 
     object SlightSnowFall : WeatherType(
-        weatherDesc = "Slight snow fall",
+        descriptionRes = R.string.weather_type_slight_snow_fall,
         iconRes = R.drawable.ic_snowy
     )
 
     object ModerateSnowFall : WeatherType(
-        weatherDesc = "Moderate snow fall",
+        descriptionRes = R.string.weather_type_moderate_snow_fall,
         iconRes = R.drawable.ic_heavysnow
     )
 
     object HeavySnowFall : WeatherType(
-        weatherDesc = "Heavy snow fall",
+        descriptionRes = R.string.weather_type_heavy_snow_fall,
         iconRes = R.drawable.ic_heavysnow
     )
 
     object SnowGrains : WeatherType(
-        weatherDesc = "Snow grains",
+        descriptionRes = R.string.weather_type_snow_grains,
         iconRes = R.drawable.ic_heavysnow
     )
 
     object SlightRainShowers : WeatherType(
-        weatherDesc = "Slight rain showers",
+        descriptionRes = R.string.weather_type_slight_rain_showers,
         iconRes = R.drawable.ic_rainshower
     )
 
     object ModerateRainShowers : WeatherType(
-        weatherDesc = "Moderate rain showers",
+        descriptionRes = R.string.weather_type_moderate_rain_showers,
         iconRes = R.drawable.ic_rainshower
     )
 
     object ViolentRainShowers : WeatherType(
-        weatherDesc = "Violent rain showers",
+        descriptionRes = R.string.weather_type_heavy_snow_showers,
         iconRes = R.drawable.ic_rainshower
     )
 
     object SlightSnowShowers : WeatherType(
-        weatherDesc = "Light snow showers",
+        descriptionRes = R.string.weather_type_light_snow_showers,
         iconRes = R.drawable.ic_snowy
     )
 
     object HeavySnowShowers : WeatherType(
-        weatherDesc = "Heavy snow showers",
+        descriptionRes = R.string.weather_type_heavy_snow_showers,
         iconRes = R.drawable.ic_snowy
     )
 
     object ModerateThunderstorm : WeatherType(
-        weatherDesc = "Moderate thunderstorm",
+        descriptionRes = R.string.weather_type_moderate_thunderstorm,
         iconRes = R.drawable.ic_thunder
     )
 
     object SlightHailThunderstorm : WeatherType(
-        weatherDesc = "Thunderstorm with slight hail",
+        descriptionRes = R.string.weather_type_thunderstorm_with_slight_hail,
         iconRes = R.drawable.ic_rainythunder
     )
 
     object HeavyHailThunderstorm : WeatherType(
-        weatherDesc = "Thunderstorm with heavy hail",
+        descriptionRes = R.string.weather_type_thunderstorm_with_heavy_hail,
+        iconRes = R.drawable.ic_rainythunder
+    )
+
+    object Unknown : WeatherType(
+        descriptionRes = R.string.weather_type_unknown,
         iconRes = R.drawable.ic_rainythunder
     )
 
@@ -174,7 +180,7 @@ sealed class WeatherType(
                 95 -> ModerateThunderstorm
                 96 -> SlightHailThunderstorm
                 99 -> HeavyHailThunderstorm
-                else -> ClearSky
+                else -> Unknown
             }
         }
     }
