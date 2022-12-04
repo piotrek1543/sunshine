@@ -17,4 +17,8 @@ import com.example.sunshine.data.cache.model.CachedWeatherData
 abstract class SunshineDatabase : RoomDatabase() {
 
     abstract fun cachedWeatherDataDao(): CachedWeatherDataDao
+
+    companion object {
+        const val DATABASE_NAME = "sunshine"
+    }
 }

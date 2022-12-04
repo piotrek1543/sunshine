@@ -114,16 +114,17 @@ fun WeatherCard(
 @Composable
 fun PreviewWeatherCard() {
     SunshineTheme {
+        val data = WeatherData(
+            id = 0,
+            time = LocalDateTime.now(),
+            weatherCode = 0,
+            pressure = 0.0,
+            temperatureCelsius = 0.0,
+            windSpeed = 0.0,
+            humidity = 0,
+        )
         WeatherCard(
-            data = WeatherData(
-                id = 0,
-                time = LocalDateTime.now(),
-                weatherCode = 0,
-                pressure = 0.0,
-                temperatureCelsius = 0.0,
-                windSpeed = 0.0,
-                humidity = 0,
-            ),
+            data = data,
             backgroundColor = DarkBlue
         )
     }

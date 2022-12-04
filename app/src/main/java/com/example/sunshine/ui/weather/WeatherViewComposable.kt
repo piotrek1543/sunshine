@@ -18,11 +18,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.sunshine.domain.weather.WeatherInfo
+import com.example.sunshine.domain.weather.WeatherData
 import com.example.sunshine.ui.theme.DarkBlue
 import com.example.sunshine.ui.theme.DeepBlue
 import com.example.sunshine.ui.theme.SunshineTheme
 import com.example.sunshine.ui.weather.WeatherViewModel.ViewState
+import java.time.LocalDateTime
 
 @Composable
 fun WeatherViewComposable(viewModel: WeatherViewModel) {
@@ -45,21 +46,20 @@ fun WeatherView(
             ViewState.Loading -> CircularProgressIndicator(
                 modifier = Modifier.align(Alignment.Center)
             )
-            is ViewState.Success -> {
-                val data = state.data
+            is ViewState.WeatherInfo -> {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
                         .verticalScroll(rememberScrollState())
                 ) {
-                    data?.currentWeatherData?.let { weatherData ->
+                    state.currentWeatherData?.let { weatherData ->
                         WeatherCard(
                             modifier = Modifier.padding(horizontal = 16.dp, vertical = 32.dp),
                             data = weatherData,
                             backgroundColor = DeepBlue
                         )
                     }
-                    for (dailyData in data?.weatherDataPerDay?.values ?: emptyList()) {
+                    for (dailyData in state.weatherDataPerDay?.values ?: emptyList()) {
                         Spacer(modifier = Modifier.height(16.dp))
                         WeatherForecast(
                             modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
@@ -69,7 +69,31 @@ fun WeatherView(
                     Spacer(modifier = Modifier.height(72.dp))
                 }
             }
-            is ViewState.Error -> Text(text = "${state.exception}")
+            is ViewState.Error -> {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .verticalScroll(rememberScrollState())
+                ) {
+                    Text(modifier = Modifier.padding(16.dp), text = "${state.exception}")
+
+                    state.currentWeatherData?.let { weatherData ->
+                        WeatherCard(
+                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 32.dp),
+                            data = weatherData,
+                            backgroundColor = DeepBlue
+                        )
+                    }
+                    for (dailyData in state.weatherDataPerDay?.values ?: emptyList()) {
+                        Spacer(modifier = Modifier.height(16.dp))
+                        WeatherForecast(
+                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
+                            data = dailyData
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(72.dp))
+                }
+            }
         }
     }
 }
@@ -77,10 +101,20 @@ fun WeatherView(
 @Preview(showBackground = true)
 @Composable
 fun PreviewWeatherView() {
+    val data = WeatherData(
+        id = 0,
+        time = LocalDateTime.now(),
+        weatherCode = 0,
+        pressure = 0.0,
+        temperatureCelsius = 0.0,
+        windSpeed = 0.0,
+        humidity = 0,
+    )
     SunshineTheme {
         WeatherView(
-            state = ViewState.Success(
-                data = WeatherInfo(emptyMap(), null)
+            state = ViewState.WeatherInfo(
+                weatherDataPerDay = mapOf(0 to listOf(data, data, data)),
+                currentWeatherData = data
             )
         )
     }

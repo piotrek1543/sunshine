@@ -4,11 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.sunshine.domain.repository.ForecastRepository
 import com.example.sunshine.domain.util.Resource
-import com.example.sunshine.domain.weather.WeatherInfo
+import com.example.sunshine.domain.weather.WeatherData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,6 +27,7 @@ class WeatherViewModel @Inject constructor(
     private fun getForecast() {
         viewModelScope.launch {
             _state.emit(ViewState.Loading)
+            val now = LocalDateTime.now()
             when (
                 val result = repository.getWeatherData(
                     lat = DEFAULT_LOCATION_LATITUDE,
@@ -33,23 +35,53 @@ class WeatherViewModel @Inject constructor(
                 )
             ) {
                 is Resource.Success -> {
-                    _state.emit(ViewState.Success(result.data))
+                    val currentWeatherData = getCurrentWeatherData(result.data, now)
+                    val weatherDataPerDay = getWeatherDataPerDay(result.data)
+
+                    _state.emit(
+                        ViewState.WeatherInfo(
+                            weatherDataPerDay = weatherDataPerDay,
+                            currentWeatherData = currentWeatherData
+                        )
+                    )
                 }
                 is Resource.Error -> {
-                    _state.emit(ViewState.Error(Exception(result.message)))
+                    val currentWeatherData = getCurrentWeatherData(result.data, now)
+                    val weatherDataPerDay = getWeatherDataPerDay(result.data)
+                    _state.emit(
+                        ViewState.Error(
+                            currentWeatherData = currentWeatherData,
+                            weatherDataPerDay = weatherDataPerDay,
+                            exception = Exception(result.message)
+                        )
+                    )
                 }
             }
         }
     }
 
+    private fun getCurrentWeatherData(
+        data: List<WeatherData>?,
+        now: LocalDateTime
+    ) = data?.find {
+        val hour = if (now.minute < DEFAULT_MINUTE_TO_COMPARE) now.hour else now.hour + 1
+        it.time?.hour == hour
+    }
+
+    private fun getWeatherDataPerDay(data: List<WeatherData>?) =
+        data?.groupBy { (index) -> index / DEFAULT_DAILY_HOURS_COUNT }
+
     sealed class ViewState {
         object Loading : ViewState()
-        data class Success(
-            val data: WeatherInfo?,
+        data class WeatherInfo(
+            val weatherDataPerDay: Map<Int, List<WeatherData>>?,
+            val currentWeatherData: WeatherData?,
         ) : ViewState()
 
         data class Error(
             val exception: Exception,
+            val weatherDataPerDay: Map<Int, List<WeatherData>>? = null,
+            val currentWeatherData: WeatherData? = null,
         ) : ViewState()
     }
 
@@ -57,5 +89,7 @@ class WeatherViewModel @Inject constructor(
         // todo - Replace it with LocationTracker
         private const val DEFAULT_LOCATION_LATITUDE = 52.40692
         private const val DEFAULT_LOCATION_LONGITUDE = 16.92993
+        private const val DEFAULT_MINUTE_TO_COMPARE = 30
+        private const val DEFAULT_DAILY_HOURS_COUNT = 24
     }
 }

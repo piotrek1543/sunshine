@@ -2,8 +2,9 @@ package com.example.sunshine.data.cache.mapper
 
 import com.example.sunshine.data.cache.model.CachedWeatherData
 import com.example.sunshine.domain.weather.WeatherData
+import javax.inject.Inject
 
-class CachedWeatherDataDaoMapper : CachedMapper<CachedWeatherData, WeatherData> {
+class CachedWeatherDataMapper @Inject constructor() : CachedMapper<CachedWeatherData, WeatherData> {
 
     override fun mapFromCached(type: CachedWeatherData) = WeatherData(
         id = type.id,

@@ -1,9 +1,7 @@
 package com.example.sunshine.data.remote.mapper
 
-import com.example.sunshine.data.remote.model.Forecast
 import com.example.sunshine.data.remote.model.Hourly
 import com.example.sunshine.domain.weather.WeatherData
-import com.example.sunshine.domain.weather.WeatherInfo
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -25,18 +23,4 @@ fun Hourly.toWeatherDataList(): List<WeatherData> {
             weatherCode = weatherCode
         )
     } ?: emptyList()
-}
-
-@Suppress("MagicNumber")
-fun Forecast.toWeatherInfo(): WeatherInfo {
-    val weatherDataList = hourly?.toWeatherDataList() ?: emptyList()
-    val now = LocalDateTime.now()
-    val currentWeatherData = weatherDataList.find {
-        val hour = if (now.minute < 30) now.hour else now.hour + 1
-        it.time?.hour == hour
-    }
-    return WeatherInfo(
-        weatherDataPerDay = weatherDataList.groupBy { (index) -> index / 24 },
-        currentWeatherData = currentWeatherData
-    )
 }
