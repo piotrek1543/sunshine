@@ -2,7 +2,7 @@ package com.example.sunshine.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 
-class Hourly {
+class HourlyEntity {
     @SerializedName("time")
     val time: List<String>? = null
 

@@ -2,7 +2,7 @@ package com.example.sunshine.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 
-class Forecast {
+class ForecastEntity {
     @SerializedName("latitude")
     val latitude: Double? = null
 
@@ -25,8 +25,8 @@ class Forecast {
     val elevation: Double? = null
 
     @SerializedName("hourly_units")
-    val hourlyUnits: HourlyUnits? = null
+    val hourlyUnits: HourlyUnitsEntity? = null
 
     @SerializedName("hourly")
-    val hourly: Hourly? = null
+    val hourly: HourlyEntity? = null
 }

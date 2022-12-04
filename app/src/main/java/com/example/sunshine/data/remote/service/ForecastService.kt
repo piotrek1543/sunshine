@@ -1,6 +1,6 @@
 package com.example.sunshine.data.remote.service
 
-import com.example.sunshine.data.remote.model.Forecast
+import com.example.sunshine.data.remote.model.ForecastEntity
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -9,5 +9,5 @@ interface ForecastService {
     suspend fun getForecast(
         @Query("latitude") lat: Double,
         @Query("longitude") long: Double
-    ): Forecast
+    ): ForecastEntity
 }
