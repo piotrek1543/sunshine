@@ -81,6 +81,9 @@ dependencies {
     implementation 'androidx.compose.material:material:1.3.1'
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
 
+    implementation "com.google.accompanist:accompanist-permissions:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-flowlayout:$accompanist_version"
+
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
 
@@ -95,7 +98,7 @@ dependencies {
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:4.10.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3"
 
     implementation "com.google.dagger:hilt-android:$dagger_hilt_version"
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
@@ -112,7 +115,7 @@ dependencies {
     testImplementation "androidx.room:room-testing:$room_version"
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.2'
 
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
 }

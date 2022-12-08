@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
-class HourlyEntityMapper @Inject constructor(): EntityMapper<HourlyEntity, List<WeatherData>> {
+class HourlyEntityMapper @Inject constructor() : EntityMapper<HourlyEntity, List<WeatherData>> {
 
     override fun mapFromRemote(type: HourlyEntity): List<WeatherData> = with(type) {
         return time?.mapIndexed { index, time ->

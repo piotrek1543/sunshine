@@ -1,7 +1,9 @@
 package com.example.sunshine.ui.weather
 
+import android.location.Location
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.sunshine.domain.location.LocationTracker
 import com.example.sunshine.domain.repository.ForecastRepository
 import com.example.sunshine.domain.util.Resource
 import com.example.sunshine.domain.weather.WeatherData
@@ -9,31 +11,33 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.time.LocalDateTime
 import javax.inject.Inject
 
 @HiltViewModel
 class WeatherViewModel @Inject constructor(
     private val repository: ForecastRepository,
+    private val locationTracker: LocationTracker,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<ViewState>(ViewState.Loading)
     val state = _state.asStateFlow()
 
-    init {
-        getForecast()
-    }
-
-    private fun getForecast() {
+    fun getForecast() {
         viewModelScope.launch {
             _state.emit(ViewState.Loading)
             val now = LocalDateTime.now()
-            when (
-                val result = repository.getWeatherData(
-                    lat = DEFAULT_LOCATION_LATITUDE,
-                    long = DEFAULT_LOCATION_LONGITUDE,
-                )
-            ) {
+            val location = locationTracker.getCurrentLocation() ?: Location("").apply {
+                longitude = DEFAULT_LOCATION_LONGITUDE
+                latitude = DEFAULT_LOCATION_LATITUDE
+            }
+            Timber.d("ssssssss - $location")
+            val result = repository.getWeatherData(
+                lat = location.latitude,
+                long = location.longitude,
+            )
+            when (result) {
                 is Resource.Success -> {
                     val currentWeatherData = getCurrentWeatherData(result.data, now)
                     val weatherDataPerDay = getWeatherDataPerDay(result.data)
