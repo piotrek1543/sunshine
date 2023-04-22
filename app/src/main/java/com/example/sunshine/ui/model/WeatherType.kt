@@ -10,142 +10,142 @@ sealed class WeatherType(
 ) {
     object ClearSky : WeatherType(
         descriptionRes = R.string.weather_type_clear_sky_,
-        iconRes = R.drawable.ic_sunny
+        iconRes = R.drawable.icon_clear_sky_day
     )
 
     object MainlyClear : WeatherType(
         descriptionRes = R.string.weather_type_mainly_clear,
-        iconRes = R.drawable.ic_cloudy
+        iconRes = R.drawable.icon_few_clouds_day
     )
 
     object PartlyCloudy : WeatherType(
         descriptionRes = R.string.weather_type_partly_cloudy,
-        iconRes = R.drawable.ic_cloudy
+        iconRes = R.drawable.icon_broken_clouds_day
     )
 
     object Overcast : WeatherType(
         descriptionRes = R.string.weather_type_overcast,
-        iconRes = R.drawable.ic_cloudy
+        iconRes = R.drawable.icon_scattered_clouds_day
     )
 
     object Foggy : WeatherType(
         descriptionRes = R.string.weather_type_foggy,
-        iconRes = R.drawable.ic_very_cloudy
+        iconRes = R.drawable.icon_mist_day
     )
 
     object DepositingRimeFog : WeatherType(
         descriptionRes = R.string.weather_type_depositing_rime_fog,
-        iconRes = R.drawable.ic_very_cloudy
+        iconRes = R.drawable.icon_scattered_clouds_day
     )
 
     object LightDrizzle : WeatherType(
         descriptionRes = R.string.weather_type_light_drizzle,
-        iconRes = R.drawable.ic_rainshower
+        iconRes = R.drawable.icon_shower_rain_day
     )
 
     object ModerateDrizzle : WeatherType(
         descriptionRes = R.string.weather_type_moderate_drizzle,
-        iconRes = R.drawable.ic_rainshower
+        iconRes = R.drawable.icon_shower_rain_day
     )
 
     object DenseDrizzle : WeatherType(
         descriptionRes = R.string.weather_type_dense_drizzle,
-        iconRes = R.drawable.ic_rainshower
+        iconRes = R.drawable.icon_rain_day
     )
 
     object LightFreezingDrizzle : WeatherType(
         descriptionRes = R.string.weather_type_slight_freezing_drizzle,
-        iconRes = R.drawable.ic_snowyrainy
+        iconRes = R.drawable.icon_shower_rain_day
     )
 
     object DenseFreezingDrizzle : WeatherType(
         descriptionRes = R.string.weather_type_dense_freezing_drizzle,
-        iconRes = R.drawable.ic_snowyrainy
+        iconRes = R.drawable.icon_shower_rain_day
     )
 
     object SlightRain : WeatherType(
         descriptionRes = R.string.weather_type_slight_rain,
-        iconRes = R.drawable.ic_rainy
+        iconRes = R.drawable.icon_rain_day
     )
 
     object ModerateRain : WeatherType(
         descriptionRes = R.string.weather_type_rainy,
-        iconRes = R.drawable.ic_rainy
+        iconRes = R.drawable.icon_rain_day
     )
 
     object HeavyRain : WeatherType(
         descriptionRes = R.string.weather_type_heavy_rain,
-        iconRes = R.drawable.ic_rainy
+        iconRes = R.drawable.icon_rain_day
     )
 
     object HeavyFreezingRain : WeatherType(
         descriptionRes = R.string.weather_type_heavy_freezing_rain,
-        iconRes = R.drawable.ic_snowyrainy
+        iconRes = R.drawable.icon_rain_day
     )
 
     object SlightSnowFall : WeatherType(
         descriptionRes = R.string.weather_type_slight_snow_fall,
-        iconRes = R.drawable.ic_snowy
+        iconRes = R.drawable.icon_snow_day
     )
 
     object ModerateSnowFall : WeatherType(
         descriptionRes = R.string.weather_type_moderate_snow_fall,
-        iconRes = R.drawable.ic_heavysnow
+        iconRes = R.drawable.icon_heavy_snow_day
     )
 
     object HeavySnowFall : WeatherType(
         descriptionRes = R.string.weather_type_heavy_snow_fall,
-        iconRes = R.drawable.ic_heavysnow
+        iconRes = R.drawable.icon_heavy_snow_day
     )
 
     object SnowGrains : WeatherType(
         descriptionRes = R.string.weather_type_snow_grains,
-        iconRes = R.drawable.ic_heavysnow
+        iconRes = R.drawable.icon_snow_day
     )
 
     object SlightRainShowers : WeatherType(
         descriptionRes = R.string.weather_type_slight_rain_showers,
-        iconRes = R.drawable.ic_rainshower
+        iconRes = R.drawable.icon_snow_day
     )
 
     object ModerateRainShowers : WeatherType(
         descriptionRes = R.string.weather_type_moderate_rain_showers,
-        iconRes = R.drawable.ic_rainshower
+        iconRes = R.drawable.icon_snow_day
     )
 
     object ViolentRainShowers : WeatherType(
         descriptionRes = R.string.weather_type_heavy_snow_showers,
-        iconRes = R.drawable.ic_rainshower
+        iconRes = R.drawable.icon_snow_day
     )
 
     object SlightSnowShowers : WeatherType(
         descriptionRes = R.string.weather_type_light_snow_showers,
-        iconRes = R.drawable.ic_snowy
+        iconRes = R.drawable.icon_snow_day
     )
 
     object HeavySnowShowers : WeatherType(
         descriptionRes = R.string.weather_type_heavy_snow_showers,
-        iconRes = R.drawable.ic_snowy
+        iconRes = R.drawable.icon_snow_day
     )
 
     object ModerateThunderstorm : WeatherType(
         descriptionRes = R.string.weather_type_moderate_thunderstorm,
-        iconRes = R.drawable.ic_thunder
+        iconRes = R.drawable.icon_thunderstorm_day
     )
 
     object SlightHailThunderstorm : WeatherType(
         descriptionRes = R.string.weather_type_thunderstorm_with_slight_hail,
-        iconRes = R.drawable.ic_rainythunder
+        iconRes = R.drawable.icon_thunderstorm_day
     )
 
     object HeavyHailThunderstorm : WeatherType(
         descriptionRes = R.string.weather_type_thunderstorm_with_heavy_hail,
-        iconRes = R.drawable.ic_rainythunder
+        iconRes = R.drawable.icon_thunderstorm_day
     )
 
     object Unknown : WeatherType(
         descriptionRes = R.string.weather_type_unknown,
-        iconRes = R.drawable.ic_rainythunder
+        iconRes = R.drawable.icon_thunderstorm_day
     )
 
     companion object {
