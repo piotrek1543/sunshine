@@ -11,7 +11,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import java.time.LocalDateTime
 import javax.inject.Inject
 
@@ -32,7 +31,6 @@ class WeatherViewModel @Inject constructor(
                 longitude = DEFAULT_LOCATION_LONGITUDE
                 latitude = DEFAULT_LOCATION_LATITUDE
             }
-            Timber.d("ssssssss - $location")
             val result = repository.getWeatherData(
                 lat = location.latitude,
                 long = location.longitude,
@@ -90,7 +88,6 @@ class WeatherViewModel @Inject constructor(
     }
 
     companion object {
-        // todo - Replace it with LocationTracker
         private const val DEFAULT_LOCATION_LATITUDE = 52.40692
         private const val DEFAULT_LOCATION_LONGITUDE = 16.92993
         private const val DEFAULT_MINUTE_TO_COMPARE = 30
