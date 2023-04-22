@@ -6,7 +6,7 @@ object WeatherDecoder {
 
     fun getStringRes(code: Int): Int {
         when (code) {
-            WeatherCodes.CLEAR_SKY -> return R.string.weather_type_clear_sky_
+            WeatherCodes.CLEAR_SKY -> return R.string.weather_type_clear_sky
             WeatherCodes.MAINLY_CLEAR -> return R.string.weather_type_mainly_clear
             WeatherCodes.PARTLY_CLOUDY -> return R.string.weather_type_partly_cloudy
             WeatherCodes.OVERCAST -> return R.string.weather_type_overcast

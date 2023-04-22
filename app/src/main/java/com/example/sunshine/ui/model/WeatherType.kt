@@ -9,7 +9,7 @@ sealed class WeatherType(
     @DrawableRes val iconRes: Int
 ) {
     object ClearSky : WeatherType(
-        descriptionRes = R.string.weather_type_clear_sky_,
+        descriptionRes = R.string.weather_type_clear_sky,
         iconRes = R.drawable.icon_clear_sky_day
     )
 
