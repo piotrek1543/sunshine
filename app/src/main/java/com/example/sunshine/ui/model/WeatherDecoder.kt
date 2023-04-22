@@ -2,6 +2,7 @@ package com.example.sunshine.ui.model
 
 import com.example.sunshine.R
 
+@Suppress("ComplexMethod", "ReturnCount")
 object WeatherDecoder {
 
     fun getStringRes(code: Int): Int {
