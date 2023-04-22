@@ -17,9 +17,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.sunshine.R
 import com.example.sunshine.domain.weather.WeatherData
-import com.example.sunshine.ui.model.WeatherType
+import com.example.sunshine.ui.model.WeatherCodes
+import com.example.sunshine.ui.model.WeatherDecoder
 import com.example.sunshine.ui.theme.SunshineTheme
 import com.example.sunshine.ui.utils.formattedTime
+import com.example.sunshine.ui.utils.isNight
 import java.time.LocalDateTime
 
 @Composable
@@ -40,9 +42,10 @@ fun HourlyWeatherDisplay(
             text = formattedTime,
             color = Color.LightGray
         )
-        val weatherType = WeatherType.of(data.weatherCode)
+        val code = data.weatherCode ?: WeatherCodes.UNKNOWN
+        val isNight = data.time?.isNight == true
         Image(
-            painter = painterResource(id = weatherType.iconRes),
+            painter = painterResource(id = WeatherDecoder.getIconRes(code, isNight)),
             contentDescription = null,
             modifier = Modifier.width(40.dp)
         )

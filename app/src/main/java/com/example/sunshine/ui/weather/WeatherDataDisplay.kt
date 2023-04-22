@@ -1,5 +1,7 @@
 package com.example.sunshine.ui.weather
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
@@ -39,7 +41,7 @@ fun WeatherDataDisplay(
             tint = iconTint,
             modifier = Modifier.size(25.dp)
         )
-        Spacer(modifier = Modifier.width(4.dp))
+        Spacer(modifier = Modifier.width(16.dp))
         Text(
             text = "$value$unit",
             style = textStyle
@@ -60,12 +62,15 @@ fun PreviewWeatherDataDisplay() {
             windSpeed = 0.0,
             humidity = 0,
         )
-        WeatherDataDisplay(
-            value = data.windSpeed?.toInt(),
-            unit = "km/h",
-            icon = ImageVector.vectorResource(id = R.drawable.ic_wind),
-            iconTint = Color.White,
-            textStyle = TextStyle(color = Color.White)
-        )
+        Box(modifier = Modifier.background(color = Color.Black)) {
+
+            WeatherDataDisplay(
+                value = data.windSpeed?.toInt(),
+                unit = "km/h",
+                icon = ImageVector.vectorResource(id = R.drawable.ic_wind),
+                iconTint = Color.White,
+                textStyle = TextStyle(color = Color.White)
+            )
+        }
     }
 }

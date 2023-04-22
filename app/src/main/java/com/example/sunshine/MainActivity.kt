@@ -27,6 +27,7 @@ class MainActivity : ComponentActivity() {
 
                     val viewModel = hiltViewModel<WeatherViewModel>()
                     WeatherViewComposable(viewModel = viewModel)
+                    viewModel.getForecast()
                 }
             }
         }
