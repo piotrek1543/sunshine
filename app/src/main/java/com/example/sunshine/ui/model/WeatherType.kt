@@ -149,37 +149,37 @@ sealed class WeatherType(
     )
 
     companion object {
-        @Suppress("MagicNumber", "ComplexMethod")
+        @Suppress("ComplexMethod")
         fun of(code: Int?): WeatherType {
             return when (code) {
-                0 -> ClearSky
-                1 -> MainlyClear
-                2 -> PartlyCloudy
-                3 -> Overcast
-                45 -> Foggy
-                48 -> DepositingRimeFog
-                51 -> LightDrizzle
-                53 -> ModerateDrizzle
-                55 -> DenseDrizzle
-                56 -> LightFreezingDrizzle
-                57 -> DenseFreezingDrizzle
-                61 -> SlightRain
-                63 -> ModerateRain
-                65 -> HeavyRain
-                66 -> LightFreezingDrizzle
-                67 -> HeavyFreezingRain
-                71 -> SlightSnowFall
-                73 -> ModerateSnowFall
-                75 -> HeavySnowFall
-                77 -> SnowGrains
-                80 -> SlightRainShowers
-                81 -> ModerateRainShowers
-                82 -> ViolentRainShowers
-                85 -> SlightSnowShowers
-                86 -> HeavySnowShowers
-                95 -> ModerateThunderstorm
-                96 -> SlightHailThunderstorm
-                99 -> HeavyHailThunderstorm
+                WeatherCodes.CLEAR_SKY -> ClearSky
+                WeatherCodes.MAINLY_CLEAR -> MainlyClear
+                WeatherCodes.PARTLY_CLOUDY -> PartlyCloudy
+                WeatherCodes.OVERCAST -> Overcast
+                WeatherCodes.FOGGY -> Foggy
+                WeatherCodes.DEPOSITING_RIME_FOG -> DepositingRimeFog
+                WeatherCodes.LIGHT_DRIZZLE -> LightDrizzle
+                WeatherCodes.MODERATE_DRIZZLE -> ModerateDrizzle
+                WeatherCodes.DENSE_DRIZZLE -> DenseDrizzle
+                WeatherCodes.LIGHT_FREEZING_DRIZZLE -> LightFreezingDrizzle
+                WeatherCodes.DENSE_FREEZING_DRIZZLE -> DenseFreezingDrizzle
+                WeatherCodes.SLIGHT_RAIN -> SlightRain
+                WeatherCodes.MODERATE_RAIN -> ModerateRain
+                WeatherCodes.HEAVY_RAIN -> HeavyRain
+                WeatherCodes.LIGHT_FREEZING_RAIN -> LightFreezingDrizzle
+                WeatherCodes.HEAVY_FREEZING_RAIN -> HeavyFreezingRain
+                WeatherCodes.SLIGHT_SNOWFALL -> SlightSnowFall
+                WeatherCodes.MODERATE_SNOWFALL -> ModerateSnowFall
+                WeatherCodes.HEAVY_SNOWFALL -> HeavySnowFall
+                WeatherCodes.SNOW_GRAINS -> SnowGrains
+                WeatherCodes.SLIGHT_RAIN_SHOWERS -> SlightRainShowers
+                WeatherCodes.MODERATE_RAIN_SHOWERS -> ModerateRainShowers
+                WeatherCodes.VIOLENT_RAIN_SHOWERS -> ViolentRainShowers
+                WeatherCodes.SLIGHT_SNOW_SHOWERS -> SlightSnowShowers
+                WeatherCodes.HEAVY_SNOW_SHOWERS -> HeavySnowShowers
+                WeatherCodes.MODERATE_THUNDERSTORM -> ModerateThunderstorm
+                WeatherCodes.SLIGHT_HAIL_THUNDERSTORM -> SlightHailThunderstorm
+                WeatherCodes.HEAVY_HAIL_THUNDERSTORM -> HeavyHailThunderstorm
                 else -> Unknown
             }
         }
